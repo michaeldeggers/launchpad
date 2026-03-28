@@ -30,6 +30,20 @@ Launchpad scaffolds opinionated, consistent services using:
 - IaC always uses OpenTofu — never raw Terraform
 - Observability wires to **Grafana Cloud** (not self-hosted); generated configs should include Prometheus-compatible metrics and an OTLP trace exporter endpoint placeholder
 
+## Build & Run
+
+```bash
+go build ./...                         # compile
+go build -o launchpad .                # build named binary
+go run . init <name>                   # run without building
+go run . init <name> --frontend        # with React + Vite frontend
+golangci-lint run ./...                # lint
+```
+
+**Bootstrap scripts:**
+- `install.sh` — end-user installer (checks Go, runs `go install @latest`)
+- `scripts/bootstrap.sh` — contributor setup (Go modules + golangci-lint + build verify)
+
 ## Git Workflow
 
 - All new features are developed on a **feature branch** off `main`
