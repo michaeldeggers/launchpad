@@ -30,6 +30,14 @@ Launchpad scaffolds opinionated, consistent services using:
 - IaC always uses OpenTofu — never raw Terraform
 - Observability wires to **Grafana Cloud** (not self-hosted); generated configs should include Prometheus-compatible metrics and an OTLP trace exporter endpoint placeholder
 
+## Build & Run
+
+```bash
+go build ./...          # compile
+go run . init <name>    # run without building
+go run . init <name> --frontend  # with React + Vite frontend
+```
+
 ## Git Workflow
 
 - All new features are developed on a **feature branch** off `main`
