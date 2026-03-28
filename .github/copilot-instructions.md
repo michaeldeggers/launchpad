@@ -33,10 +33,16 @@ Launchpad scaffolds opinionated, consistent services using:
 ## Build & Run
 
 ```bash
-go build ./...          # compile
-go run . init <name>    # run without building
-go run . init <name> --frontend  # with React + Vite frontend
+go build ./...                         # compile
+go build -o launchpad .                # build named binary
+go run . init <name>                   # run without building
+go run . init <name> --frontend        # with React + Vite frontend
+golangci-lint run ./...                # lint
 ```
+
+**Bootstrap scripts:**
+- `install.sh` — end-user installer (checks Go, runs `go install @latest`)
+- `scripts/bootstrap.sh` — contributor setup (Go modules + golangci-lint + build verify)
 
 ## Git Workflow
 

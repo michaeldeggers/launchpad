@@ -1,65 +1,59 @@
 ## 🚀 Launchpad
 
-**Launchpad** is a lightweight service bootstrap tool that creates fully deployable applications using a standardized platform pattern.
+**Launchpad** is a lightweight CLI tool that scaffolds fully deployable services using an opinionated golden path.
 
-Instead of rebuilding the same setup for every new service, Launchpad generates a ready-to-run repository with:
-- Preconfigured CI/CD pipelines
-- Infrastructure-as-Code wiring
-- Deployment manifests
-- Health checks and service structure
-- Config and secrets patterns
-- Basic observability hooks
+Run one command. Get a production-ready service with backend, optional frontend, IaC, CI/CD, health checks, and observability — all wired up and consistent.
 
-The goal is simple:  
-**reduce setup friction, enforce consistency, and make deployments repeatable by default.**
+```bash
+launchpad init my-service
+launchpad init my-service --frontend   # include React + Vite frontend
+```
 
 ---
 
-### Why Launchpad?
+### Install
 
-Every new service tends to drift:
-- slightly different structure
-- inconsistent pipelines
-- ad-hoc configuration
-- unclear operational standards
+Requires [Go 1.21+](https://go.dev/dl/).
 
-Launchpad defines a **golden path** so that every service:
-- builds the same way
-- deploys the same way
-- behaves the same way in production
+```bash
+curl -fsSL https://raw.githubusercontent.com/michaeldeggers/launchpad/main/install.sh | bash
+```
 
----
+Or manually:
 
-### What it does
-
-Given a few inputs (like service name and environment), Launchpad generates a complete service scaffold that:
-- builds and deploys out of the box
-- follows consistent patterns
-- is ready to run in a real environment
+```bash
+go install github.com/michaeldeggers/launchpad@latest
+```
 
 ---
 
-### What it is not
+### What it generates
 
-Launchpad is not:
-- a full platform or internal developer portal
-- a multi-stack abstraction layer
-- a replacement for infrastructure tooling
-
-It is a **focused bootstrap layer** that encodes best practices into a repeatable starting point.
-
----
-
-### Philosophy
-
-- **Start simple** — one stack, one path
-- **Optimize for execution** — working service over perfect design
-- **Dogfood everything** — use it to build real services
-- **Evolve from friction** — improve based on actual usage
+| Concern | Choice |
+|---|---|
+| Backend | Go + Chi |
+| Frontend (opt-in) | React + Vite |
+| Default (no frontend) | Static status page |
+| IaC | OpenTofu (GCP) |
+| Observability | Grafana Cloud |
+| CI/CD | Preconfigured pipeline |
 
 ---
 
-### Status
+### Contributing
 
-🚧 Early-stage MVP  
-Built to define and refine repeatable deployment patterns through real use.
+```bash
+git clone https://github.com/michaeldeggers/launchpad.git
+cd launchpad
+bash scripts/bootstrap.sh
+```
+
+The bootstrap script installs all dev dependencies (Go modules, golangci-lint) and verifies the build.
+
+```bash
+go run . --help              # run the CLI
+go build -o launchpad .      # build a local binary
+golangci-lint run ./...      # lint
+```
+
+---
