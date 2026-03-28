@@ -30,6 +30,12 @@ Launchpad scaffolds opinionated, consistent services using:
 - IaC always uses OpenTofu — never raw Terraform
 - Observability wires to **Grafana Cloud** (not self-hosted); generated configs should include Prometheus-compatible metrics and an OTLP trace exporter endpoint placeholder
 
+## Git Workflow
+
+- All new features are developed on a **feature branch** off `main`
+- Branch naming: `feature/<short-description>` (e.g., `feature/init-command`)
+- Merge back to `main` via PR
+
 ## Status
 
 Early-stage MVP. Core CLI structure is being established.
